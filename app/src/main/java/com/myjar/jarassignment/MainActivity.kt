@@ -2,6 +2,7 @@ package com.myjar.jarassignment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -35,7 +36,10 @@ class MainActivity : ComponentActivity() {
     private fun observeFlows() {
         lifecycleScope.launch {
             viewModel.listStringData.collectLatest {
+                Log.d("flowMain","$it")
                 adapter.submitList(it)
+
+
             }
         }
 
